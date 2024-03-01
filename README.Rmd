@@ -1,0 +1,72 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# whatawaste
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of whatawaste is to ...
+
+## Installation
+
+You can install the development version of whatawaste from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("openwashdata/whatawaste")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(whatawaste)
+## basic example code
+```
+
+```{r pressure, echo = FALSE}
+countrylevel[1,] 
+abw<- countrylevel |>
+  tidyr::pivot_longer(
+  cols = starts_with("composition_"),
+  names_to = "composition_type",
+  names_pattern = "composition_(.*)_percent",
+  values_to = "composition_percent",
+  values_drop_na = TRUE
+) |>
+  tidyr::pivot_longer(
+    cols = starts_with("special_waste_"),
+    names_to = "special_waste_type",
+    names_pattern = "special_waste_(.*)_tons_year",
+    values_to = "special_waste_mass",
+    values_drop_na = TRUE
+  ) |>
+  tidyr::pivot_longer(
+    cols = starts_with("waste_treatment_"),
+    names_to = "waste_treatment_type",
+    names_pattern = "waste_treatment_(.*)_percent",
+    values_to = "waste_treatment_percent",
+    values_drop_na = TRUE
+  ) |>
+  tidyr::pivot_longer(
+    cols = starts_with("waste_collection_coverage_"),
+    names_to = "waste_collection_coverage_type",
+    names_pattern = "waste_collection_coverage_(.*)",
+    values_to = "waste_collection_coverage",
+    values_drop_na = TRUE
+  )
+```
