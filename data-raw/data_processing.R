@@ -9,15 +9,17 @@ library(here)
 library(readr)
 library(readxl)
 library(openxlsx)
+library(dplyr)
 
 # Read data --------------------------------------------------------------------
-# data_in <- readr::read_csv("data-raw/dataset.csv")
+data_in <- readr::read_csv("data-raw/country_level_data.csvins")
 # codebook <- readxl::read_excel("data-raw/codebook.xlsx") |>
 #  clean_names()
 
 # Tidy data --------------------------------------------------------------------
 ## Clean the raw data into a tidy format here
-
+data_in %>%
+  janitor::clean_names()
 
 # Export Data ------------------------------------------------------------------
 usethis::use_data(whatawaste, overwrite = TRUE)
